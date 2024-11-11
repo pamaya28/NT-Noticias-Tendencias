@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias y Tendencias</title>
+
+    <link rel="icon" href="logo.jpg" type="image/x-icon">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fondo negro */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Contenedor del móvil */
+        .phone-container {
+            width: 400px;
+            height: 700px;
+            border: 2px solid #333;
+            border-radius: 30px;
+            background-color: #1c1c1c;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        /* Barra de estado superior */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 15px;
+            background-color: #333;
+            color: white;
+            font-size: 0.8em;
+        }
+
+        .status-bar div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+       
+
+        /* Encabezado */
+        header {
+            background-color: #4b0082;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center; /* Alinea la imagen y el texto */
+            justify-content: center; /* Centra todo */
+        }
+
+        header img {
+            width: 40px; /* Tamaño de la imagen */
+            height: 40px; /* Tamaño de la imagen */
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+
+
+        /* Contenedor del contenido principal */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 50px; /* Espacio para la barra inferior */
+        }
+
+        /* Botones de categoría */
+        .category-button {
+            padding: 20px;
+            border-bottom: 1px solid #3c3c3c;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #b39ddb;
+            cursor: pointer;
+        }
+
+        .category-button:hover {
+            background-color: #4b0082;
+        }
+
+        /* Contenido de cada categoría */
+        .news-content {
+            padding: 20px;
+            display: none;
+            text-align: justify;
+        }
+
+        .back-button {
+            background-color: #4b0082;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Barra de navegación inferior */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 15px;
+            background-color: #333;
+            color: white;
+            font-size: 0.8em;
+        }
+
+        .nav-bar div {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: #999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-container">
+    <!-- Barra de estado superior -->
+    <div class="status-bar">
+        <div>
+            <i><img src="wifi.jpg" width="20" height="20"></i> <!-- Indicador de Wi-Fi -->
+        </div>
+        <div>6:00 PM</div>
+        <div>
+            <i><img src="bateria.jpg" width="20" height="20">100%</i> <!-- Indicador de batería -->
+        </div>
+    </div>
+    <header>
+        <img src="logo.jpg" alt="Logo"> <!-- Imagen junto al título -->
+        <span>Noticias y Tendencias</span> <!-- Título -->
+    </header>
+
+ <div class="phone-container">
+
+
+    <!-- Contenido principal con categorías -->
+    <div class="main-content">
+        <!-- Botones de categoría -->
+        <div class="category-button" onclick="showContent('deportes')">Deportes</div>
+        <div class="category-button" onclick="showContent('internacionales')">Internacionales</div>
+        <div class="category-button" onclick="showContent('nacionales')">Nacionales</div>
+        <div class="category-button" onclick="showContent('moda')">Moda</div>
+        <div class="category-button" onclick="showContent('chismes')">Chismes</div>
+
+        <!-- Contenido de noticias -->
+        <div id="deportes" class="news-content">
+            <div class="back-button" onclick="hideContent()"></div>
+            <h2>Deportes</h2>
+            <div class="sub-category-button" onclick="showSubContent('deportes-nacionales')">Futbol Nacional</div>
+            <div class="sub-category-button" onclick="showSubContent('deportes-internacionales')">Futbol Internacional</div>
+            <div class="sub-category-button" onclick="showSubContent('mas-deportes')">Más Deportes</div>
+            <img src="depor.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+
+        </div>
+
+        <!-- Contenido de las subcategorías de Deportes -->
+        <div id="deportes-nacionales" class="sub-content" style="display: none;">
+            <div class="back-button" onclick="goBackToDeportes()">Atrás</div>
+            <h2>Deportes Nacionales</h2>
+            <h3>Atención: Convocados y medidas de seguridad para el clásico entre Nacional y DIM en el Atanasio</h3>
+            <p>El clásico entre Atlético Nacional y DIM por la fecha 18 de la Liga Betplay tiene varios elementos que lo hacen más atractivo.
+
+                Uno de ellos es que tras la sanción de Dimayor y la Alcaldía de Medellín, regresan al Atanasio Girardot las dos hinchadas de los equipos, además, el verde quiere el triunfo para instalarse en la parte alta de la tabla y el rojo los necesita para mantener la ilusión matemática de meterse a los ocho.
+                Los técnicos Efraín Juárez y Alejandro Restrepo entregaron la lista de convocados en la que la única ausencia es la de David Ospina, quien está concentrado con la Selección Colombia en Argentina, con miras a los juegos de Eliminatoria ante Uruguay y Ecuador, los días 15 y 19 de noviembre.</p>
+                <img src="NMfut.jpg" alt="Imagen de un evento deportivo nacional" width="100%" style="border-radius: 10px; margin: 10px 0;">
+       
+            </div>
+        <div id="deportes-internacionales" class="sub-content" style="display: none;">
+            <div class="back-button" onclick="goBackToDeportes()">Atrás</div>
+            <h2>Deportes Internacionales</h2>
+            <h3>Decepción en Miami: el Inter de Leo Messi queda eliminado</h3>
+            <p>Gran decepción en Miami. El gran favorito al título de Liga de la MLS, el Inter Miami de Leo Messi, quedó fuera en la primera eliminatoria de playoffs.
+
+                Con récord histórico de puntos en la MLS y con el título de la Supporters Shield (Liga regular) en el bolsillo…. pero también con la sensación de haber sido apeado del torneo demasiado pronto.
+                
+                Así ha concluido Lionel Messi su segundo año con Inter Miami, una temporada marcada por algunos éxitos claros, pero también con un final amargo. Messi y el equipo de rosa descarrilaron este sábado en la primera ronda del 'playoff' por la MLS Cup ante un Atlanta United que dio la campanada venciendo por 2-3 para llevarse la serie al mejor de tres por 1-2. El equipo que dirige Gerardo Martino tenía colgado el cartel de favorito para la MLS Cup tras acabar primero del Este, conquistar el MLSSupporters' Shield (trofeo al mejor equipo de la temporada regular) y batir la marca de puntos en la liga con 74. Quizá por estar tan arriba, la caída fue más dolorosa.</p>
+                <img src="messi.jpg" alt="Imagen de un evento deportivo nacional" width="100%" style="border-radius: 10px; margin: 10px 0;">
+        </div>
+        <div id="mas-deportes" class="sub-content" style="display: none;">
+            <div class="back-button" onclick= "goBackToDeportes()">Atrás</div>
+            <h2>Más Deportes</h2>
+            <h3>NFL: ¿Qué dejó la Semana 10 después de la jornada dominical?</h3>
+            <p>La Semana 10 de la temporada 2024 de la NFL arrancó el jueves con el triunfo de los Baltimore Ravens sobre los Cincinnati Bengals por 35-34. Después, en Múnich, los Carolina Panthers se impusieron 20-17 sobre los New York Giants en tiempo extra para arrancar temprano la actividad dominical.
+
+                El intento de sorpresa de los Denver Broncos se quedó corto contra los Kansas City Chiefs, que se colocaron en 9-0. El corredor de los San Francisco 49ers, Christian McCaffrey, hizo su debut en la temporada frente a los Tampa Bay Buccaneers, y los New Orleans Saints regresaron al camino de la victoria a costa de los Atlanta Falcons.
+                
+                En la tanda vespertina del domingo, los Arizona Cardinals y Philadelphia Eagles apalearon a los New York Jets y Dallas Cowboys, respectivamente.</p>
+                <img src="NFL.jpg" alt="Imagen de un evento deportivo nacional" width="100%" style="border-radius: 10px; margin: 10px 0;">
+             <h3>LeBron James guio el triunfo de Los Angeles Lakers y Nikola Jokic volvió a brillar en Denver Nuggets</h3>
+             <p>Los Angeles Lakers venció este domingo a Toronto Raptors con una gran actuación de LeBron James, pero Anthony Davis abandonó el encuentro por un golpe en el ojo izquierdo, mientras que Nikola Jokic continúa a un nivel increíble y guio a Denver Nuggets a su quinto triunfo seguido.
+                
+                A punto de cumplir tres semanas de competición, esta temporada de la NBA deja por el momento un contraste gigantesco entre las dos conferencias, ya que en el Oeste 11 de los 15 equipos están con al menos el 50 % de victorias y en un Este flojísimo por el momento solo hay tres franquicias (Cleveland Cavaliers, Boston Celtics e Indiana Pacers) con al menos tantos triunfos como derrotas.</p>   
+                <img src="NBA.jpg" alt="Imagen de un evento deportivo nacional" width="100%" style="border-radius: 10px; margin: 10px 0;">
+
+
+        </div>
+        <div id="internacionales" class="news-content">
+            <div class="back-button" onclick="hideContent()"></div>
+            <h2>Internacionales</h2>
+            <h3>Zelensky afirma que Ucrania está combatiendo contra 50.000 soldados de Rusia en la región de Kursk</h3>
+            <p>El presidente de Ucrania, Volodymyr Zelensky, dijo este lunes que Rusia ha desplegado casi 50.000 soldados en Kursk, la región del sur de Rusia donde Kyiv lanzó su contraofensiva sorpresa en el verano.
+
+                Las tropas ucranianas “siguen conteniendo” al “grupo enemigo de casi 50.000 hombres” en Kursk, dijo Zelensky en una publicación en Telegram.
+                
+                Corea del Norte envió ciudadanos para ayudar al ejército ruso a luchar contra Ucrania, dice Zelensky
+                Un funcionario estadounidense dijo a CNN el domingo que Rusia ha reunido una gran fuerza de decenas de miles de personas, incluidas las tropas norcoreanas recién llegadas , para llevar a cabo un asalto a las posiciones ucranianas en Kursk. El funcionario dijo que se esperaba la ofensiva en los próximos días.
+                
+                Por otra parte, un comandante ucraniano dijo a CNN el domingo que las tropas norcoreanas estaban participando en operaciones de combate directo en Kursk, así como en operaciones defensivas en la vecina región rusa de Belgorod y en territorios ucranianos ocupados por Rusia.</p>
+                <img src="rusia.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+            
+                <h3>¿Cuál será el rol de Trump en el escenario mundial?</h3>
+                <p>El regreso de Donald Trump a la presidencia de Estados Unidos abrió una serie de interrogantes sobre lo que se puede esperar de su política exterior, con dos conflictos bélicos en curso y un mundo polarizado en el que líderes como Vladimir Putin hablan de un nuevo orden mundial. Por estas circunstancias, hay incertidumbre por el rol que va a jugar el presidente número 47 de Estados Unidos. Solange Márquez, analista internacional del Canadian Global Affairs Institute, detalla lo que podría llegar en el segundo mandato de Trump en materia de política internacional.</p>
+                <img src="trump.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+
+            </div>
+        <div id="nacionales" class="news-content">
+            <div class="back-button" onclick="hideContent()"></div>
+            <h2>Nacionales</h2>
+            <h3>Inundaciones por ruptura de tubo matriz de EPM en Santa Cruz dejan a 457 personas damnificadas</h3>
+            <p>El alcalde de Medellín, Federico Gutiérrez, entregó el primer reporte de las personas que resultaron afectadas por la ruptura de un tubo matriz del acueducto en la comuna Santa Cruz. Según la información entregada por Gutiérrez, la emergencia deja preliminarmente damnificadas a 130 familias compuestas por 457 personas. Estas están integradas por 147 niños, niñas y adolescentes, 349 adultos, 45 personas mayores y 16 personas con discapacidad. También hay 112 animales de compañía.
+                "No hay pérdida de vidas humanas, solo hay daños materiales. Cinco personas que han tenido algún tipo de lesión leve fueron atendidas", manifestó Gutiérrez.</p>
+                <img src="inun.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+
+            <h3>TransMilenio devolverá la plata de pasaje tras protestas de hinchas de Millonarios en Bogotá: lo que debe hacer</h3>
+            <p>La Alcaldía de Bogotá y TransMilenio reaccionaron a las protestas de hinchas de Millonarios, quienes bloquearon la avenida NQS en la noche del 10 de noviembre exigiendo más buses del sistema de transporte. 
+                Los seguidores del equipo de fútbol salieron del estadio El Campín tras el partido entre Millonarios y Pereira. Cuando trataban de regresar a sus casas, denunciaron nula frecuencia de las rutas del componente troncal, por lo que se manifestaron en plena carrera 30. 
+                "Allí la operación (de TransMilenio) fue hasta las 10 p. m. El partido se acabó más allá de 10 p. m., y hubo problemas en la operación que llevaron a que algunas personas pagaran el pasaje y no encontraran el servicio activo", dijo Miguel Silva, secretario general de la Alcaldía de Bogotá, en diálogo con Citytv.
+Ante las protestas, TransMilenio dispuso de nueve buses biarticulados, con capacidad para más de 250 personas cada uno, con tal de atender a los afectados.
+El Distrito reconoció que fue un "error" y se comprometió a trabajar para que este tipo de situaciones no vuelvan a ocurrir. "Esto no puede pasar. O se amplía el horario de manera excepcional o se coordina con Dimayor para que el partido termine antes del fin de la operación del sistema. La gente no se puede quedar sin transporte", comentó el alcalde Carlos Fernando Galán.
+            </p>
+            <img src="prote.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+
+
+
+        </div>
+        <div id="moda" class="news-content">
+            <div class="back-button" onclick="hideContent()"></div>
+            <h2>Moda</h2>
+            <h3>“Nexis”, la primera colección de la marca de ropa de Maluma</h3>
+                <p>En la noche del lunes el Edificio Inteligente de Medellín se convirtió en el escenario elegido por Juan Luis Londoño, más conocido como Maluma, para presentar Remanence, su marca de ropa.</p>
+                <img src="maluma.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+            <h3>VOGUE</h3>
+            <p>Hortensia Maeso: la firma valenciana que, tras las consecuencias de la DANA, se plantea un futuro de reinvención La firma de ropa de ceremonia infantil que aún tiene su taller en el polígono de L'Alquería de Moret, en Picanya, justo enfrente del barranco que se desbordó en Paiporta, tendrá que volver a empezar (casi) de cero. “Hemos conseguido salvar parte de lo que había en el almacén de arriba, en donde teníamos el stock de producto terminado y algunos pedidos de tiendas multimarcas”, cuenta a Vogue España Yasmin Odeh, responsable de producción y de la dirección artística de la firma.
+
+                Tiempo atrás, la marca había dado sus primeros pasos como Rubio Kids; una empresa familiar fundada por Hortensia junto a su exmarido, que hasta hace unos días vivía uno de sus mejores momentos. “Cuando acabó de estudiar Diseño de Moda en Estilismo e Indumentaria, mi madre empezó una firma de ropa de comunión que se propuso romper con todos los esquemas”, recuerda Odeh. “En ese momento, aquel era un sector muy paralizado y ella supo que hacía falta otro tipo de producto, más fresco”. Y se puso manos a la obra.
+                Desde entonces, Hortensia se enfrentó a una serie de retos, tanto económicos —crisis del textil— como sanitarios —crisis del COVID—. En 2012, la separación de su entonces marido hizo que la empresa que había cofundado con tanto empeño tuviese que renombrarse. Sería rebautizada como Les enfants de l’Eden. “Rubio Kids tenía registrado Hortensia Maeso, así que al iniciar su nueva andadura, mi madre no pudo seguir usando su nombre”, detalla la hija de la cofundadora.
+                Pero ese pequeño detalle burocrático no le impidió seguir avanzando y para evitar desaparecer, la diseñadora creó su propia empresa con muy pocos recursos, lo que le dificultaba presentar una colección a la altura de las circunstancias. Aquel nuevo proyecto fue rebautizado como Les Enfants de l' Eden by Hortensia Maeso. “Lo que legalmente sí que podía hacer mi madre era firmar con su nombre, pero no podíamos utilizarlo como marca. Íbamos a la feria y ella tenía que competir con su propia marca, que vendía los diseños que les había dejado”, continúa Odeh.
+                <img src="vo1.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+
+                No solo allí se habían quedado sus diseños: parte de la plantilla seguía trabajando para su antigua empresa. Tres años después, esta cerraría sus puertas y aquellos trabajadores acabarían volviendo con Hortensia, que además recuperó su marca. Mientras tanto, su negocio se fortaleció y con el paso del tiempo incorporó a su catálogo vestidos de invitada para mujeres y adolescentes, llevando así su propuesta más renovadora a otros sectores de la población. Esta nueva expansión le permitió fichar por una agencia de comunicación con la que iniciaría un proceso de internalización que ahora se ha visto parado momentáneamente. “El martes fuimos a trabajar; nuestro horario es de siete a tres. Menos mal, porque si nos hubiésemos ido más tarde habría sido dramático”, comparte Odeh. “Se oía que venían tormentas muy fuertes, pero no imaginábamos que ocurriría lo que ocurrió”.
+                Su taller —al que accedieron después de unos días; antes no habían podido hacerlo porque la autovía que unía su casa con su espacio de trabajo se partió en dos y el resto de accesos estaban inundados— lo integran dieciséis mujeres y un hombre. “Al principio, pensábamos que igual solo habría unos centímetros de agua, pero no fue así. La mesa de corte no estaba; estaba enterrada en barro y se había trasladado a otra zona. La preocupación de Hortensia era cómo estaría el muestrario de mujer que iba a formar parte de la Mediterranean Fashion Week que se celebraría los próximos 15, 16 y 17 de noviembre”, recuerda la hija de la fundadora.
+                Estas últimas horas, todo el equipo y una serie de voluntarios se dedicaron a empaquetar todos los pedidos que se salvaron del agua y el lodo para enviárselos a sus clientes. “Lo hicimos andando; los llevamos a una agencia para que los acercasen a la central porque todo empieza a oler muy mal. El resto del stock estamos tratando de moverlo a un lugar salubre con un proveedor que nos está ayudando. Nuestra esperanza son las máquinas de coser; a ver si se pueden salvar”, comparte esperanzada Odeh.
+
+                Entre tanto, Hortensia Maeso sigue adelante y se propone llegar a nuevos clientes afianzando su colección de invitada para adolescente y mujer, ya que la ropa de comunión recibe cada vez menos demanda. “Los proveedores de etiquetas, portatrajes o tejidos nos están ofreciendo su apoyo para servirnos cuanto antes y algunos incluso lo están haciendo antes de tiempo. Iniciamos ahora una carrera de fondo para poder servir a finales de febrero. Sigue la campaña. Nuestras tiendas están funcionando con total normalidad”, concluye.</p>
+                <img src="vo2.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+                
+
+
+        </div>
+        <div id="chismes" class="news-content">
+            <div class="back-button" onclick="hideContent()"></div>
+            <h2>Tendencias de farandula</h2>
+            <h3>El comediante Lokillo brilla en la Red Bull 'Batalla 5 Vidas' y se corona campeón en Chile</h3>
+            <p>El miércoles 6 de noviembre Red Bull realizó uno de sus torneos más significativos de freestyle en la ciudad de Santiago de Chile . Como invitado espacial 'Lokillo Flórez'
+
+                Esta 'Red Bull Batalla 5 Vidas' se diferencia de las demás por su forma de competir.
+                
+                En los dos últimos dos años Red Bull se ha destacado por realizar batallas de freestyle en toda latino américa, en la que Colombia ha resaltado por sus participantes como 'Valles T', 'Coloso' y el comediante 'Lokillo' Flórez.
+                El 'Rey de la trova' como le dicen algunos, 'Lokillo' Flórez de ser trovador pasó a ser comediante y después de un tiempo vuelve a improvisar en los escenarios de Red Bull.</p>
+                <img src="lokillo.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+            <h3>Blessd y Ryan Castro reaccionan a críticas de '+57': "No me den responsabilidad"</h3>
+            <p>La canción +57, colaboración entre algunos de los artistas más populares del reguetón colombiano como Karol G, J Balvin, Maluma, Feid, Ryan Castro y Blessd, ha generado una fuerte polémica desde su lanzamiento.
+
+                Mientras que la canción ha acumulado millones de reproducciones en plataformas como YouTube, las críticas sobre su letra no han tardado en aparecer, alcanzando tanto al público en general como a figuras de la industria.
+                
+                El Instituto Colombiano de Bienestar Familiar (ICBF) y la cantante Fariana han sido algunos de los críticos más polémicos. Ante este escenario, Blessd y Ryan Castro no han dudado en expresar su opinión de manera directa.
+                La revista Rolling Stone calificó a +57 como un “desastre” y publicó un artículo donde criticaba severamente el contenido de la canción. Aunque la publicación fue retirada de la plataforma poco después, el mensaje ya había impactado.
+
+                Además, Fariana, una de las exponentes de la música urbana en Colombia, señaló que su ausencia en la colaboración se debe a la falta de apoyo hacia las mujeres en la escena urbana del país.
+                Blessd, cuyo nombre real es Stiven Mesa Londoño, ha sido uno de los primeros en responder a estas críticas.
+
+                En su cuenta de X, el artista publicó un mensaje que dejó clara su postura: “Mi amor, críe usted sus hijos que yo estoy es trabajando y haciendo música. No me den la responsabilidad de crianza, eso hágalo usted. Póngale la vaca Lola que yo hago es reguetón, ahí me disculpa.”
+                <img src="bless.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+
+                Por su parte, Ryan Castro también hizo uso de X para expresar su opinión frente a la polémica. Con un tono relajado y haciendo referencia a un conocido meme, el artista afirmó: “Desde que yo esté bien, que ruede el mundo a mi alrededor listo. Nada asara parcero, critiquen lo que quieran que eso a mí ¡no me importa!”.
+            </p>
+            <img src="57.jpg" alt="imagen" width="100%" style="border-radius: 10px; margin: 10px 0;">
+
+
+        </div>
+    </div>
+</div>
+
+    <!-- Barra de navegación inferior -->
+    <div class="nav-bar">
+        <div onclick="hideContent()">⬅</div> <!-- Flecha de regreso -->
+        <div onclick="hideContent()">⬤</div> <!-- Círculo de inicio -->
+        <div>⬛</div> <!-- Cuadrado para ver ventanas abiertas -->
+        
+    </div>
+</div>
+
+<script>
+  function showContent(category) {
+        // Oculta los botones de categoría
+        document.querySelectorAll('.category-button').forEach(button => button.style.display = 'none');
+        // Oculta todo el contenido principal de noticias y subcategorías
+        document.querySelectorAll('.news-content').forEach(content => content.style.display = 'none');
+        document.querySelectorAll('.sub-content').forEach(content => content.style.display = 'none');
+        
+        // Muestra la categoría seleccionada
+        document.getElementById(category).style.display = 'block';
+    }
+
+    function showSubContent(subCategory) {
+        // Oculta el contenido de la categoría principal (Deportes)
+        document.getElementById('deportes').style.display = 'none';
+        // Muestra la subcategoría seleccionada
+        document.querySelectorAll('.sub-content').forEach(content => content.style.display = 'none');
+        document.getElementById(subCategory).style.display = 'block';
+    }
+
+    function goBackToDeportes() {
+        // Oculta las subcategorías
+        document.querySelectorAll('.sub-content').forEach(content => content.style.display = 'none');
+        // Muestra el contenido principal de la categoría Deportes
+        document.getElementById('deportes').style.display = 'block';
+    }
+
+    function hideContent() {
+        // Oculta todo el contenido y muestra los botones de categoría
+        document.querySelectorAll('.news-content').forEach(content => content.style.display = 'none');
+        document.querySelectorAll('.sub-content').forEach(content => content.style.display = 'none');
+        document.querySelectorAll('.category-button').forEach(button => button.style.display = 'block');
+    }
+</script>
+
+</body>
+</html>
+
